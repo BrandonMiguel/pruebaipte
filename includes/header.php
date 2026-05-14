@@ -5,7 +5,7 @@
     <title>Dashboard Profesional</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root { --primary: #4e73df; --dark: #222e3c; --light: #f5f7fb; }
+        :root { --primary: #4e73df; --dark: #000000; --light: #f5f7fb; }
         body { font-family: 'Inter', sans-serif; background: var(--light); margin: 0; display: flex; }
         .sidebar { width: 250px; height: 100vh; background: var(--dark); color: white; padding: 20px; position: fixed; }
         .main { margin-left: 250px; padding: 40px; width: 100%; }
@@ -13,11 +13,14 @@
         .btn { background: var(--primary); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; transition: 0.3s; }
         .btn:hover { opacity: 0.8; }
         .stats { color: #1cbb8c; font-weight: bold; }
+
+        tr:hover { background-color: #f8f9fc; }
+th { color: #4e73df; text-transform: uppercase; font-size: 13px; }
     </style>
 </head>
 <body>
     <div class="sidebar">
-        <h2><i class="fas fa-gem"></i> Géminis</h2>
+        <h2><i class="fas fa-gem"></i> Jacob</h2>
         <hr style="opacity: 0.1">
         <p><i class="fas fa-home"></i> Dashboard</p>
         <p><i class="fas fa-user"></i> Perfil</p>
