@@ -1,7 +1,7 @@
 <?php 
     // Aquí podrías tener lógica de base de datos
-    $usuario = "Brandon Miguel";
-    $rol = "Administrator";
+    $usuario = "Arthur Morgan y John Marston";
+    $rol = "Director";
     $status = "Online";
 ?>
 
@@ -15,5 +15,9 @@
         <p>Estás visualizando la vista profesional separada por componentes.</p>
         <a href="#" class="btn">Generar Reporte</a>
     </div>
+
+    <?php 
+    echo "ya estoy aprendiendo algo nuevo /n";
+    ?>
 
 <?php include 'includes/footer.php'; ?>
