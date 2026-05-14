@@ -35,6 +35,8 @@
                     </div>
                 </div>
             <?php endforeach; ?>
+
+            <?php echo "holaaa saludos";   ?>
         </div>
     </div>
 
