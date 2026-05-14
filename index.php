@@ -1,57 +1,64 @@
 <?php 
     $usuario = "Brandon Miguel";
-    
-    // Simulamos una lista de datos (esto vendría de una base de datos)
     $proyectos = [
-        ["nombre" => "Control de Inventarios", "fecha" => "2026-05-10", "estado" => "Completado"],
-        ["nombre" => "Sistema de Tickets", "fecha" => "2026-05-12", "estado" => "En progreso"],
-        ["nombre" => "Módulo de Reportes", "fecha" => "2026-05-14", "estado" => "Pendiente"],
+        ["nombre" => "Control de Inventarios", "progreso" => 100, "color" => "#1cbb8c"],
+        ["nombre" => "Sistema de Tickets", "progreso" => 65, "color" => "#4e73df"],
+        ["nombre" => "Módulo de Reportes", "progreso" => 20, "color" => "#f6c23e"],
     ];
 ?>
 
 <?php include 'includes/header.php'; ?>
 
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">
-        <div class="card" style="border-left: 5px solid #1cbb8c;">
-            <h4 style="margin:0; color:#666;">Proyectos Totales</h4>
-            <h2 style="margin:10px 0;"><?php echo count($proyectos); ?></h2>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h1>Panel de Control <small style="font-size: 0.5em; color: #888;">v2.0</small></h1>
+        <button onclick="toggleDarkMode()" class="btn" style="background: #333;">
+            <i class="fas fa-moon"></i> Cambiar Modo
+        </button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 25px;">
+        <div class="card">
+            <h3><i class="fas fa-chart-line"></i> Rendimiento Semanal</h3>
+            <canvas id="myChart" height="150"></canvas>
         </div>
-        <div class="card" style="border-left: 5px solid #4e73df;">
-            <h4 style="margin:0; color:#666;">Horas Trabajadas</h4>
-            <h2 style="margin:10px 0;">42 hrs</h2>
-        </div>
-        <div class="card" style="border-left: 5px solid #f6c23e;">
-            <h4 style="margin:0; color:#666;">Alertas</h4>
-            <h2 style="margin:10px 0;">2</h2>
+
+        <div class="card">
+            <h3><i class="fas fa-tasks"></i> Progreso Real</h3>
+            <?php foreach($proyectos as $p): ?>
+                <div style="margin-bottom: 15px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 5px;">
+                        <span><?php echo $p['nombre']; ?></span>
+                        <span><?php echo $p['progreso']; ?>%</span>
+                    </div>
+                    <div style="background: #eee; border-radius: 10px; height: 8px;">
+                        <div style="background: <?php echo $p['color']; ?>; width: <?php echo $p['progreso']; ?>%; height: 100%; border-radius: 10px;"></div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 
-    <div class="card">
-        <h2><i class="fas fa-list"></i> Listado de Proyectos</h2>
-        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-            <thead>
-                <tr style="text-align: left; border-bottom: 2px solid #eee;">
-                    <th style="padding: 12px;">Nombre</th>
-                    <th style="padding: 12px;">Fecha</th>
-                    <th style="padding: 12px;">Estado</th>
-                    <th style="padding: 12px;">Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach($proyectos as $p): ?>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 12px;"><?php echo $p['nombre']; ?></td>
-                    <td style="padding: 12px;"><?php echo $p['fecha']; ?></td>
-                    <td style="padding: 12px;">
-                        <span style="padding: 4px 8px; border-radius: 5px; font-size: 12px; background: #eee;">
-                            <?php echo $p['estado']; ?>
-                        </span>
-                    </td>
-                    <td style="padding: 12px;"><button class="btn" style="padding: 5px 10px;">Ver</button></td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                datasets: [{
+                    label: 'Commits realizados',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderColor: '#4e73df',
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(78, 115, 223, 0.1)'
+                }]
+            }
+        });
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
 
 <?php include 'includes/footer.php'; ?>
