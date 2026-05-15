@@ -36,7 +36,8 @@
                 </div>
             <?php endforeach; ?>
 
-            <?php echo "holaaa saludos";   ?>
+            <?php echo "holaaa saludos a todos";   ?>
+            <?php echo "aqui seguimos echanole ganas aver que sale hoy";   ?>
         </div>
     </div>
 
