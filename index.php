@@ -2,7 +2,7 @@
 
     <header style="margin-bottom: 40px;">
         <h1 style="font-size: 2.5rem; font-weight: 800;">Hola de nuevo, <span style="color: var(--primary);">Brandon</span> </h1>
-        <p style="color: #64748b;">Esto es lo que está pasando hoy en el Proyecto Géminis.</p>
+        <p style="color: #64748b;">esto ya lo estoy modificando ahora en la rama master/ osea la principal para ver el funcionamiento de las ramas</p>
     </header>
 
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 40px;">
