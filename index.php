@@ -1,44 +1,28 @@
-<?php 
-    $usuario = "Brandon Miguel";
-    $proyectos = [
-        ["nombre" => "Control de Inventarios", "progreso" => 100, "color" => "#1cbb8c"],
-        ["nombre" => "Sistema de Tickets", "progreso" => 65, "color" => "#4e73df"],
-        ["nombre" => "Módulo de Reportes", "progreso" => 20, "color" => "#f6c23e"],
-    ];
-?>
-
 <?php include 'includes/header.php'; ?>
 
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-        <h1>Panel de Control <small style="font-size: 0.5em; color: #888;">v2.0</small></h1>
-        <button onclick="toggleDarkMode()" class="btn" style="background: #333;">
-            <i class="fas fa-moon"></i> Cambiar Modo
-        </button>
+    <header style="margin-bottom: 40px;">
+        <h1 style="font-size: 2.5rem; font-weight: 800;">Hola de nuevo, <span style="color: var(--primary);">Brandon</span> </h1>
+        <p style="color: #64748b;">Esto es lo que está pasando hoy en el Proyecto Géminis.</p>
+    </header>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 40px;">
+        <div class="card" style="background: linear-gradient(135deg, #6366f1, #4f46e5); color: white;">
+            <p>Proyectos Activos</p>
+            <h2 style="font-size: 2.5rem;">08</h2>
+        </div>
+        <div class="card" style="background: linear-gradient(135deg, #a855f7, #9333ea); color: white;">
+            <p>Commits de Hoy</p>
+            <h2 style="font-size: 2.5rem;">24</h2>
+        </div>
+        <div class="card" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white;">
+            <p>Tareas Pendientes</p>
+            <h2 style="font-size: 2.5rem;">12</h2>
+        </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 25px;">
-        <div class="card">
-            <h3><i class="fas fa-chart-line"></i> Rendimiento Semanal</h3>
-            <canvas id="myChart" height="150"></canvas>
-        </div>
-
-        <div class="card">
-            <h3><i class="fas fa-tasks"></i> Progreso Real</h3>
-            <?php foreach($proyectos as $p): ?>
-                <div style="margin-bottom: 15px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 5px;">
-                        <span><?php echo $p['nombre']; ?></span>
-                        <span><?php echo $p['progreso']; ?>%</span>
-                    </div>
-                    <div style="background: #eee; border-radius: 10px; height: 8px;">
-                        <div style="background: <?php echo $p['color']; ?>; width: <?php echo $p['progreso']; ?>%; height: 100%; border-radius: 10px;"></div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-
-            <?php echo "holaaa saludos a todos";   ?>
-            <?php echo "aqui seguimos echanole ganas aver que sale hoy";   ?>
-        </div>
+    <div class="card">
+        <h3><i class="fas fa-chart-area"></i> Flujo de Trabajo Semanal</h3>
+        <canvas id="myChart" height="100"></canvas>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -47,21 +31,21 @@
         new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                labels: ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'],
                 datasets: [{
-                    label: 'Commits realizados',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderColor: '#4e73df',
+                    label: 'Productividad',
+                    data: [30, 45, 35, 60, 55, 80, 95],
+                    borderColor: '#6366f1',
+                    borderWidth: 4,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#6366f1',
                     tension: 0.4,
                     fill: true,
-                    backgroundColor: 'rgba(78, 115, 223, 0.1)'
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)'
                 }]
-            }
+            },
+            options: { plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { grid: { display: false } } } }
         });
-
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
     </script>
 
 <?php include 'includes/footer.php'; ?>
